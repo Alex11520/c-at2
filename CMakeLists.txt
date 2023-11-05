@@ -10,4 +10,6 @@ add_executable(at2_cpp main.cpp
         task/task.h
         task_list/Task_list.cpp
         task_list/Task_list.h
-        )
+        menu/Menu.cpp
+        menu/Menu.h
+)

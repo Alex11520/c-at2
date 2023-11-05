@@ -26,6 +26,20 @@ bool Task_list::ifNodeExist(Node* new_node){
     }
 }
 
+Node* Task_list::search_task(std::string content) {
+    if(content == "") { std::cout << "Invalid content." << std::endl; return nullptr; }
+    Node* curr = head;
+    while (curr->get_next() != nullptr){
+        while (curr->get_task().get_content() != content) {
+            curr = curr->get_next();
+        }
+        if (curr->get_task().get_content() == content) {
+            return curr;
+        }
+    }
+    std::cout << "No content found." << std::endl;
+    return nullptr;
+}
 
 void Task_list::add_front(Node *new_node) {
     if(new_node == nullptr){ return; }
@@ -67,12 +81,15 @@ void Task_list::move_ahead(Node *node) {
         if(node == this->head) { return; }
         Node* prev = node->get_prev();
         Node* next = node->get_next();
-        if(prev == this->head){
-
+        if(prev == head) { head = node; node->set_prev(nullptr); }
+        if(next == nullptr) {
+            prev->link_prev(node);
+            prev->set_next(nullptr);
+            return;
         }
         prev->link_prev(node);
-        prev->link_next(next);
-        if(node->get_prev() == nullptr) { this->head = node; }
+        next->link_prev(prev);
+
     } else {
         std::cout << "node doesnt exist in the list" << std::endl;
         return;
@@ -80,19 +97,46 @@ void Task_list::move_ahead(Node *node) {
 }
 
 void Task_list::move_back(Node *node) {
-    if(ifNodeExist(node)){
-        if(node->get_next() == nullptr){ return; }
+    if(ifNodeExist(node)) {
+        if(node->get_next() == nullptr) { return; }
         Node* prev = node->get_prev();
         Node* next = node->get_next();
-        next->link_next(node);
-        next->link_prev(prev);
-        if(node->get_prev()->get_prev() == nullptr){
-            this->head = node->get_prev();
+        if(node == head) {
+            node->set_next(next->get_next());
+            node->set_prev(next);
+            next->set_next(node);
+            next->set_prev(nullptr);
+            head = next;
+            return;
         }
+        prev->set_next(next);
+        next->set_prev(prev);
+        node->set_next(next->get_next());
+        next->set_next(node);
+        node->set_prev(next);
+
     } else {
         std::cout << "node doesnt exist in the list" << std::endl;
+        return;
     }
 }
+
+void Task_list::print_task_list() {
+    if(head== nullptr) { std::cout << "empty list" << std::endl; return; }
+    Node* curr = head;
+    while (curr != nullptr) {
+        curr->print_node();
+        curr = curr->get_next();
+    }
+}
+
+void Task_list::delete_list(Node* node) {
+    if (node == nullptr) { std::cout << "empty list" << std::endl; return; }
+    delete_list(node->get_next());
+    delete node;
+    head = nullptr;
+}
+
 
 
 

@@ -40,6 +40,8 @@ void Node::link_prev(Node *new_node) {
     {
         new_node->prev = prev_node;
         prev_node->next = new_node;
+    } else {
+        new_node->prev = nullptr;
     }
 }
 
@@ -55,6 +57,8 @@ void Node::link_next(Node *new_node) {
     if (nextNode != nullptr) {
         new_node->next = nextNode;
         nextNode->prev = new_node;
+    } else {
+        new_node->next = nullptr;
     }
 }
 

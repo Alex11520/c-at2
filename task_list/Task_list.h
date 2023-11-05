@@ -19,12 +19,16 @@ public:
     Task_list();
 
     bool ifNodeExist(Node* new_node);
+    Node* search_task(std::string content);
 
     void add_front(Node* new_node);
     void add_back(Node* new_node);
 
     void move_ahead(Node* node);
     void move_back(Node* node);
+
+    void print_task_list();
+    void delete_list(Node* node);
 };
 
 

@@ -73,6 +73,12 @@ build CMakeFiles/at2_cpp.dir/task_list/Task_list.cpp.o: CXX_COMPILER__at2_cpp_un
   OBJECT_DIR = CMakeFiles/at2_cpp.dir
   OBJECT_FILE_DIR = CMakeFiles/at2_cpp.dir/task_list
 
+build CMakeFiles/at2_cpp.dir/menu/Menu.cpp.o: CXX_COMPILER__at2_cpp_unscanned_Debug /Users/siwanyu/Assignment/c++/at2_cpp/menu/Menu.cpp || cmake_object_order_depends_target_at2_cpp
+  DEP_FILE = CMakeFiles/at2_cpp.dir/menu/Menu.cpp.o.d
+  FLAGS = -g -std=gnu++17 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.0.sdk -fcolor-diagnostics
+  OBJECT_DIR = CMakeFiles/at2_cpp.dir
+  OBJECT_FILE_DIR = CMakeFiles/at2_cpp.dir/menu
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target at2_cpp
@@ -81,7 +87,7 @@ build CMakeFiles/at2_cpp.dir/task_list/Task_list.cpp.o: CXX_COMPILER__at2_cpp_un
 #############################################
 # Link the executable at2_cpp
 
-build at2_cpp: CXX_EXECUTABLE_LINKER__at2_cpp_Debug CMakeFiles/at2_cpp.dir/main.cpp.o CMakeFiles/at2_cpp.dir/node/node.cpp.o CMakeFiles/at2_cpp.dir/task/task.cpp.o CMakeFiles/at2_cpp.dir/task_list/Task_list.cpp.o
+build at2_cpp: CXX_EXECUTABLE_LINKER__at2_cpp_Debug CMakeFiles/at2_cpp.dir/main.cpp.o CMakeFiles/at2_cpp.dir/node/node.cpp.o CMakeFiles/at2_cpp.dir/task/task.cpp.o CMakeFiles/at2_cpp.dir/task_list/Task_list.cpp.o CMakeFiles/at2_cpp.dir/menu/Menu.cpp.o
   FLAGS = -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.0.sdk
   OBJECT_DIR = CMakeFiles/at2_cpp.dir
   POST_BUILD = :
